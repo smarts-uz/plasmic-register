@@ -23,15 +23,6 @@
 .root > * {
   grid-column: 4;
 }
-.freeBox {
-  display: flex;
+.auth:global(.__wab_instance) {
   position: relative;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 8px;
 }

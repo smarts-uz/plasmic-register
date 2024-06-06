@@ -65,24 +65,3 @@
   height: auto;
   min-width: 0;
 }
-.loginForm:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-  position: relative;
-}
-.textInput:global(.__wab_instance) {
-  max-width: 100%;
-  position: relative;
-}
-.svg___5UEi {
-  position: relative;
-  object-fit: cover;
-  width: auto;
-  height: 1em;
-}
-.svg__rYvem {
-  position: relative;
-  object-fit: cover;
-  width: auto;
-  height: 1em;
-}

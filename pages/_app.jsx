@@ -1,18 +1,16 @@
 import '@/styles/globals.css'
 import { PlasmicRootProvider } from "@plasmicapp/react-web";
-import Head from "next/head";
 import {useEffect} from "react";
-
 import { createClient } from '@/utils/supabase/client'
-import {headers} from "next/headers";
 export default function MyApp({ Component, pageProps }) {
    // Step 1, subscribe to onAuthStateChange
     useEffect(() => {
-        const {data: authListener} = createClient.auth.onAuthStateChange((event, session) =>{
+        const supabase = createClient();
+        const {data: authListener} = supabase.auth.onAuthStateChange((event, session) =>{
             updateSupabaseCookie(event,session)
         } )
         return () =>{
-            authListener?.unsubscribe()
+            authListener?.unsubscribe();
         }
     });
     async function updateSupabaseCookie(event, session) {
@@ -32,8 +30,20 @@ export default function MyApp({ Component, pageProps }) {
     // step 2, update the supabase auth cookie on server
 
   return (
-    <PlasmicRootProvider Head={Head}>
+    <PlasmicRootProvider >
       <Component {...pageProps} />
     </PlasmicRootProvider>
   );
 }
+// ---------------------------------------------------------------------------------------------------------
+// import '@/styles/globals.css'
+// import { PlasmicRootProvider } from "@plasmicapp/react-web";
+// import Head from "next/head";
+//
+// export default function MyApp({ Component, pageProps }) {
+//     return (
+//         <PlasmicRootProvider Head={Head}>
+//             <Component {...pageProps} />
+//         </PlasmicRootProvider>
+//     );
+// }
